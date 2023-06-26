@@ -1,0 +1,39 @@
+/* .div{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+/* .errorMessage{
+    display: flex;
+    justify-content: center;
+}
+.div-container{
+    display: flex;
+
+} */
+.div-card{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    height: 30rem;
+
+}
+
+.div-card-img{
+    height: 15rem;
+}
+.div-card-title{
+    height: 1.5rem;
+}
+/* .div-card-link{
+    height: 5rem;
+} */
+
+.div-card-button{
+    margin: 10px 0;
+    height:2rem;
+    /* margin-left: 2px;
+    margin-right: 2px; */
+}
