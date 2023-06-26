@@ -7,7 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function CreateBook() {
   const [input, setInput] = useState({
     title: "",
+    author:'',
     content: "",
+    image:'',
+      price:''
+   
+
   });
   function handleChange(event) {
     const { name, value } = event.target;
@@ -24,15 +29,20 @@ function CreateBook() {
     event.preventDefault();
 
     const newBook = {
-      title:input.title,
-      content:input.content
+      title:input.title || "No Title",
+      author:input.author || "No Author",
+      content:input.content || "No Description",
+      image:input.image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_Bhv9K6DJZZkBX2C3s16vO0X6580sWCrxVQ&usqp=CAU",
+      price:input.price || "10"
     }
-    axios.post("http://localhost:3001/create",newBook)
+    console.log(newBook);
+    axios.post("http://localhost:3001/create",newBook);
   }
 
   return (
     <div className="container">
       <h1> Add Book Page </h1>
+   
 
       <Form>
         <Form.Group controlId="exampleForm.ControlInput1">
@@ -48,7 +58,19 @@ function CreateBook() {
         </Form.Group>
 
         <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Book content</Form.Label>
+          <Form.Label>Author</Form.Label>
+          <Form.Control
+            onChange={handleChange}
+            type="text"
+            name="author"
+            value={input.author}
+            autoComplete="off"
+            placeholder="Book author here"
+          />
+        </Form.Group>
+
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Book description</Form.Label>
           <Form.Control
             onChange={handleChange}
             type="text"
@@ -56,6 +78,30 @@ function CreateBook() {
             value={input.content}
             autoComplete="off"
             placeholder="Book content here"
+          />
+        </Form.Group>
+
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Book Image</Form.Label>
+          <Form.Control
+            onChange={handleChange}
+            type="text"
+            name="image"
+            value={input.image}
+            autoComplete="off"
+            placeholder="Book image here"
+          />
+        </Form.Group>
+
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Price</Form.Label>
+          <Form.Control
+            onChange={handleChange}
+            type="text"
+            name="price"
+            value={input.price}
+            autoComplete="off"
+            placeholder="Book price here"
           />
         </Form.Group>
 
