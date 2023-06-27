@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Books from "./components/Books";
 import CreateBook from "./components/CreateBook";
+import DeleteBook from './components/DeleteBook'
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Route path="/" exact element={<Home />} />
         <Route path="/books" element={<Books />} />
         <Route path="/create" element={<CreateBook />} />
-      </Routes>
+        <Route path="/delete" element={<DeleteBook />} />
+           </Routes>
     </Router>
   );
 }

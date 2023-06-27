@@ -17,6 +17,8 @@ mongoose.connect("mongodb+srv://manar11:0000000000@cluster0.wkmd6hb.mongodb.net/
 
 
 app.use('/', require('./routes/bookRoute'));
+app.use('/update/id', require('./routes/bookRoute'));
+// app.use('/', require('./routes/bookRoute'));
 
 app.listen(3001 ,function(){
     console.log('express server is running on port 3001');
