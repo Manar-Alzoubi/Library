@@ -1,6 +1,6 @@
 const mongoose =require('mongoose');
 
-const booksDchema ={
+const booksSchema ={
     title:String,
     author:String,
     content : String,
@@ -8,7 +8,7 @@ const booksDchema ={
     price:String
 }
 
-const Book =mongoose.model('Book' ,booksDchema );
+const Book =mongoose.model('Book' ,booksSchema );
 
 // const testBook = new Book({title:"new book" ,author:"me" ,content:"bad book", image:"gggggggggg" , price:"25"});
 // testBook.save().then(doc =>{console.log(doc)}).catch(err =>{console.log(err)});
