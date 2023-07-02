@@ -1,5 +1,5 @@
 const express = require("express");
-
+const auth = require("../middleware/auth");
 const router = express.Router();
 const Book = require("../models/bookModel");
 
@@ -24,34 +24,39 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.get("/books", async (req, res) => {
+router.get("/books",  async (req, res) => {
   const books = await Book.find().then((foundBooks) => res.json(foundBooks));
 });
 
-
-router.patch("/:id", async (req, res) => {
+router.patch("/update/:id", async (req, res) => {
+  try {
     const book = await Book.findById(req.params.id);
 
     if (!book) return res.status(404).send("Book not found...");
 
-  
+    const { title, author, content, image, price } = req.body;
+
     const updatedBook = await Book.findByIdAndUpdate(
       req.params.id,
       {
-        author : "Manar"
+        title,
+        author,
+        content,
+        image,
+        price,
       },
       {
         new: true,
       }
     );
-  
+
     res.send(updatedBook);
-  });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
 
-
-
-
-router.delete("/delete/:id", async(req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   try {
     const deletedBook = await Book.findByIdAndDelete(req.params.id);
     res.send(deletedBook);
@@ -59,10 +64,5 @@ router.delete("/delete/:id", async(req, res) => {
     res.status(500).send(error.message);
   }
 });
-
-
-
-
-
 
 module.exports = router;
